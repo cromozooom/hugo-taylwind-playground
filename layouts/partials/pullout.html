@@ -1,9 +1,35 @@
-<div class="py-4" x-data="{push: false, overlay: false, toggle: false}">
+<div class="py-4" x-data="{show: true, overlay: false, toggle: false}">
   <div class="flex">
     <!-- Sidebar -->
-    <div class="min-w-[20rem] border p-2" x-show="push">
+    <div class="min-w-[20rem] border p-3" x-show="show">
       <div class="flex flex-col">
-        <strong>Filter Push</strong>
+        <div class="flex justify-between items-center">
+          <strong>Filter show</strong>
+          <div>
+            <button
+              @click="show = !show;"
+              :class="show ? ' border-green-500' : 'border-green-500/0'"
+              class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+            >
+              <div class="flex justify-end items-center gap-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-arrow-left-short"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"
+                  />
+                </svg>
+                <span class="ml-2"> Hide </span>
+              </div>
+            </button>
+          </div>
+        </div>
 
         <div class="bg-green-100/50 my-2 p-2">
           <p>easy to access & edit</p>
@@ -21,20 +47,18 @@
       <div class="p-3">
         <div class="d-flex">
           <button
+            x-show="!show"
+            @click="show = !show;"
+            class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1 border-green-500/0"
+          >
+            Show Filter
+          </button>
+          <button
             @click="toggle = !toggle;"
             :class="toggle ? ' border-yellow-500' : 'border-yellow-500/0'"
             class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
           >
             Toggle Filter
-          </button>
-          <button
-            @click="push = !push;"
-            :class="push ? 'border-green-500' : 'border-green-500/0'"
-            class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
-          >
-            Push
-            <span x-show="push">Back Filter</span>
-            <span x-show="!push">Filter</span>
           </button>
           <button
             @click="overlay = !overlay;"
