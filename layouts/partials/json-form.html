@@ -1,0 +1,177 @@
+<body x-data="mydata()" class="overflow-y-scroll">
+  {{ partial "menu.html" . }}
+
+  <button
+    class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+    @click="fetchform()"
+  >
+    bring data
+  </button>
+  <button
+    class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+    @click="saveData"
+  >
+    Save Data
+  </button>
+
+  <!-- API form -->
+  <template x-for="item in form">
+    <div class="flex">
+      <div class="grow">
+        <template x-if="item.ux_edit">
+          <form
+            action=""
+            class="py-4 border"
+            :class="
+            item.ux_fullWidth ? 'p-10' : 'container mx-auto'
+        "
+          >
+            <strong class="text-lg px-2" x-text="item.title"></strong>
+            <span x-text="item.id"></span>
+            <span x-text="item.ux_fullWidth"></span>
+            <div
+              class="grid gap-1"
+              :class="{
+                   'grid-cols-2': item.ux_col === 2,
+                   'grid-cols-3': item.ux_col === 3,
+                   'grid-cols-4': item.ux_col === 4,
+                   'grid-cols-5': item.ux_col === 5,
+                   'grid-cols-6': item.ux_col === 6,
+                   'grid-cols-7': item.ux_col === 7,
+                   'grid-cols-8': item.ux_col === 8,
+                   'grid-cols-9': item.ux_col === 9,
+                   'grid-cols-10': item.ux_col === 10,
+                   'grid-cols-11': item.ux_col === 11,
+                   'grid-cols-12': item.ux_col === 12,
+                   'grid-cols-13': item.ux_col === 13,
+                   'grid-cols-14': item.ux_col === 14,
+                   'grid-cols-15': item.ux_col === 15,
+                   'grid-cols-16': item.ux_col === 16
+                 }"
+            >
+              <template x-for="item in item.fields">
+                <div
+                  class="xxx-border"
+                  :class="{
+                    'col-span-2': item.ux_span === 2,
+                    'col-span-3': item.ux_span === 3,
+                    'col-span-4': item.ux_span === 4,
+                    'col-span-5': item.ux_span === 5,
+                    'col-span-6': item.ux_span === 6,
+                    'col-span-7': item.ux_span === 7,
+                    'col-span-8': item.ux_span === 8,
+                    'col-span-9': item.ux_span === 9,
+                    'col-span-10': item.ux_span === 10,
+                    'col-span-11': item.ux_span === 11,
+                    'col-span-12': item.ux_span === 12,
+                    'col-span-13': item.ux_span === 13,
+                    'col-span-14': item.ux_span === 14,
+                    'col-span-15': item.ux_span === 15,
+                    'col-span-16': item.ux_span === 16
+                    }"
+                >
+                  <div x-show="item.type === 'text'">
+                    {{ partial "fields/text/edit.html" . }}
+                  </div>
+                  <div x-show="item.type === 'checkbox'">
+                    {{ partial "fields/checkbox.html" . }}
+                  </div>
+                  <div x-show="item.type === 'textarea'">
+                    {{ partial "fields/textarea.html" . }}
+                  </div>
+                </div>
+              </template>
+            </div>
+          </form>
+        </template>
+        <template x-if="!item.ux_edit">
+          <div
+            x-show="!item.ux_edit"
+            :class="
+            item.ux_fullWidth ? 'p-10' : 'container mx-auto'
+        "
+          >
+            <strong class="text-lg px-2" x-text="item.title"></strong>
+            <span x-text="item.id"></span>
+            <span x-text="item.ux_fullWidth"></span>
+
+            <dl>
+              <template x-for="item in item.fields">
+                <span class="grid grid-cols-2 p-2">
+                  <dt x-text="item.label"></dt>
+                  <dd class="font-medium">sample value</dd>
+                </span>
+              </template>
+            </dl>
+          </div>
+        </template>
+      </div>
+      <div class="w-[30rem] p-2 flex flex-col">
+        edit form
+
+        <div>
+          <label class="relative inline-flex items-center mb-4 cursor-pointer">
+            <input
+              x-model="item.ux_fullWidth"
+              type="checkbox"
+              value="item.ux_fullWidth"
+              class="sr-only peer"
+            />
+            <div
+              class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+            ></div>
+            <span
+              class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >fullWidth</span
+            >
+          </label>
+        </div>
+        <div>
+          <label class="relative inline-flex items-center mb-4 cursor-pointer">
+            <input
+              x-model="item.ux_edit"
+              type="checkbox"
+              value="item.ux_edit"
+              class="sr-only peer"
+            />
+            <div
+              class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+            ></div>
+            <span
+              class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >Togle Edit</span
+            >
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script type="text/javascript">
+    // load data from API
+    function mydata() {
+      return {
+        form: [],
+        isLoading: false,
+        fetchform() {
+          this.isLoading = true;
+          fetch(`/formConfig.json`)
+            .then((res) => res.json())
+            .then((data) => {
+              this.isLoading = false;
+              this.form = data;
+              console.log(this.form);
+            });
+        },
+      };
+    }
+    // save to storage
+    function saveData() {
+      localStorage.setItem("forms", JSON.stringify(this.form));
+    }
+
+    function test(el) {
+      console.log(el);
+    }
+  </script>
+</body>

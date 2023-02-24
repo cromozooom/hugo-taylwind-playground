@@ -1,0 +1,98 @@
+<!-- horisontal -->
+<div
+  x-show="!item.ux_vertical"
+  class="p-2 hover:bg-slate-100 rounded"
+  :class="item.error ?  'bg-red-50/50' : ''"
+>
+  horisontal
+  <div class="grid grid-cols-2 gap-2">
+    <div>
+      <span
+        class="pb-2 font-medium text-sm"
+        :class="item.error ?  'text-red-500' : ''"
+        x-show="item.label"
+        x-text="item.label + ' ' + item.ux_vertical"
+      ></span>
+    </div>
+    <template x-for="val in item.options">
+      <div>
+        <label
+          x-show="item.options"
+          for="remember"
+          class="ml-2 flex items-center gap-2"
+        >
+          <input
+            id="remember"
+            type="checkbox"
+            value=""
+            class="w-4 h-4 border rounded focus:ring-3 focus:ring-blue-300"
+            :class="item.error ?  'border-red-300 bg-red-50' : 'border-gray-300 bg-gray-50' "
+            required
+          />
+          <span
+            class=""
+            xxx-show="val.val"
+            x-text="val.val"
+            :class="item.error ? 'text-red-500' :''"
+            >test</span
+          >
+        </label>
+      </div>
+    </template>
+
+    <template
+      class="col-span-2 text-red-500 py-1 mt-2 w-full"
+      x-if="item.error && item.error.content"
+    >
+      <span x-text="item.error.content"></span>
+    </template>
+  </div>
+</div>
+<!-- vertical -->
+<div
+  class="p-2 hover:bg-slate-100 rounded"
+  :class="item.error ?  'bg-red-50/50' : ''"
+  x-show="item.ux_vertical"
+>
+  <div class="flex flex-col">
+    <div class="pb-4" x-show="item.label || item.label === '' ">
+      <span
+        :class="item.error ?  'text-red-500' : ''"
+        class="font-medium text-sm"
+        x-show="item.label"
+        x-text="item.label + ' ' + item.ux_vertical"
+      ></span>
+    </div>
+    <div>
+      <template x-for="val in item.options">
+        <label
+          x-show="item.options"
+          for="remember"
+          class="ml-2 flex items-center gap-2"
+        >
+          <input
+            id="remember"
+            type="checkbox"
+            value=""
+            class="w-4 h-4 border rounded focus:ring-3 focus:ring-blue-300"
+            :class="item.error ? 'border-red-300 bg-red-50' : '' "
+            required
+          />
+          <template x-if="val.val">
+            <span
+              class=""
+              x-text="val.val"
+              :class="item.error ? 'text-red-500' : ''"
+            ></span>
+          </template>
+        </label>
+      </template>
+    </div>
+    <template x-if="item.error && item.error.content">
+      <span
+        class="col-span-2 text-red-500 py-1 mt-2 w-full"
+        x-text="item.error.content"
+      ></span>
+    </template>
+  </div>
+</div>

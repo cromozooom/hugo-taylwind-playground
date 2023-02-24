@@ -1,0 +1,54 @@
+<!-- horisontal -->
+<div
+  class="p-2 hover:bg-slate-100 rounded-none"
+  x-show="!item.ux_vertical"
+  :class="item.error ?  'bg-red-50/50' : ''"
+>
+  <label class="grid grid-cols-2 gap-2">
+    <div class="flex flex-col" :class="item.error ? '':'pt-3'">
+      <span
+        class="font-medium text-sm"
+        x-text="item.label"
+        :class="item.error ? 'text-red-600':'text-black' "
+      ></span>
+      <small
+        class="col-span-2 text-red-500 mt-2"
+        x-show="item.error && item.error.content"
+        x-text="item.error.content"
+      ></small>
+    </div>
+    <div class="flex items-center">
+      <input
+        type="text"
+        class="block w-full rounded"
+        placeholder="test"
+        :class="item.error ? 'border-red-300 bg-red-50  focus:ring-red-500 focus:border-red-500' : 'bg-gray-50 border-gray-300 focus:ring-blue-500 focus:border-blue-500' "
+      />
+    </div>
+  </label>
+</div>
+<!-- vertical -->
+<div
+  class="flex flex-col p-2 hover:bg-slate-100 rounded"
+  x-show="item.ux_vertical"
+  :class="item.error ?  'bg-red-50/50' : ''"
+>
+  <label class="block">
+    <span
+      class="font-medium text-sm"
+      x-text="item.label + ' ' + item.ux_vertical"
+      :class="item.error ? 'text-red-600':'text-black' "
+    ></span>
+    <input
+      type="text"
+      class="mt-1 block w-full rounded"
+      placeholder="test"
+      :class="item.error ? 'border-red-300 bg-red-50  focus:ring-red-500 focus:border-red-500' : 'bg-gray-50 border-gray-300 focus:ring-blue-500 focus:border-blue-500' "
+    />
+  </label>
+  <small
+    class="py-1 text-red-500 rounded mt-2"
+    x-show="item.error"
+    x-text="item.error.content"
+  ></small>
+</div>

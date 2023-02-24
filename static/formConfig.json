@@ -1,0 +1,173 @@
+[
+    {
+        "id": 1,
+        "title": "My first form",
+        "subform": false,
+        "ux_col": 2,
+        "ux_edit": true,
+        "ux_fullWidth": false,
+        "fields": [
+            {
+                "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                "type": "text",
+                "options": [
+                    {
+                        "val": "Smaple text",
+                        "selected": false
+                    }
+                ],
+                "ux_span": 2,
+                "ux_vertical": false,
+                "placeholder": "",
+                "xerror": {
+                    "content": "this is the error"
+                }
+            },
+            {
+                "label": "Label 1",
+                "type": "text",
+                "options": [
+                    {
+                        "val": "Smaple text",
+                        "selected": false
+                    }
+                ],
+                "ux_span": 2,
+                "ux_vertical": false,
+                "xerror": {
+                    "content": "this is the error"
+                }
+            },
+            {
+                "type": "checkbox",
+                "options": [
+                    {
+                        "val": "Remember me / no lable",
+                        "selected": false
+                    }
+                ],
+                "ux_span": 2,
+                "ux_vertical": false,
+                "xerror": {
+                    "content": "this is the error",
+                    "selected": true
+                }
+            },
+            {
+                "label": "Checkbox with label",
+                "type": "checkbox",
+                "options": [
+                    {
+                        "val": "Smaple text",
+                        "selected": true
+                    }
+                ],
+                "ux_span": 2,
+                "ux_vertical": false,
+                "xerror": {
+                    "content": "this is the error"
+                }
+            },
+            {
+                "label": "textarea with label",
+                "type": "textarea",
+                "ux_span": 2,
+                "ux_vertical": false,
+                "options": [
+                    {
+                        "val": "Smaple text",
+                        "selected": false
+                    }
+                ],
+                "xerror": {
+                    "content": "this is the error"
+                }
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "My second form",
+        "subform": false,
+        "ux_col": 1,
+        "ux_edit": false,
+        "ux_fullWidth": true,
+        "fields": [
+            {
+                "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                "type": "text",
+                "options": [
+                    {
+                        "val": "Smaple text",
+                        "selected": true
+                    }
+                ],
+                "ux_span": 2,
+                "ux_vertical": true,
+                "placeholder": "",
+                "xerror": {
+                    "content": "this is the error"
+                }
+            },
+            {
+                "label": "Label 1",
+                "type": "text",
+                "options": [
+                    {
+                        "val": "Smaple text",
+                        "selected": false
+                    }
+                ],
+                "ux_span": 2,
+                "ux_vertical": true,
+                "xerror": {
+                    "content": "this is the error"
+                }
+            },
+            {
+                "type": "checkbox",
+                "options": [
+                    {
+                        "val": "Remember me / no lable",
+                        "selected": false
+                    }
+                ],
+                "ux_span": 2,
+                "ux_vertical": true,
+                "xerror": {
+                    "content": "this is the error"
+                }
+            },
+            {
+                "label": "Checkbox with label",
+                "type": "checkbox",
+                "options": [
+                    {
+                        "val": "Smaple text",
+                        "selected": false
+                    }
+                ],
+                "ux_span": 2,
+                "ux_vertical": true,
+                "xerror": {
+                    "content": "this is the error"
+                }
+            },
+            {
+                "label": "textarea with label",
+                "type": "textarea",
+                "options": [
+                    {
+                        "val": "Smaple text",
+                        "selected": false
+                    }
+                ],
+                "ux_span": 2,
+                "ux_vertical": true,
+                "xerror": {
+                    "content": "this is the error"
+                }
+            }
+        ]
+    }
+]
