@@ -1,0 +1,116 @@
+<div class="grid grid-cols-1 gap-6 p-3">
+  <label class="block">
+    <span class="text-gray-700">Full name</span>
+    <input type="text" class="mt-1 block w-full" placeholder="" />
+  </label>
+  <label class="block">
+    <span class="text-gray-700">Email address</span>
+    <input
+      type="email"
+      class="mt-1 block w-full"
+      placeholder="john@example.com"
+    />
+  </label>
+  <label class="block">
+    <span class="text-gray-700">When is your event?</span>
+    <input type="date" class="mt-1 block w-full" />
+  </label>
+  <label
+    class="block"
+    :class="bug ? 'overflow-hidden max-h-6 border-red-500/80 border-4' : ''"
+  >
+    <span class="text-gray-700">What type of event is it?</span>
+    <select class="block w-full mt-1">
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+      <option>Corporate event</option>
+      <option>Wedding</option>
+      <option>Birthday</option>
+      <option>Other</option>
+    </select>
+  </label>
+  <label class="block">
+    <span class="text-gray-700">Additional details</span>
+    <textarea class="mt-1 block w-full" rows="3"></textarea>
+  </label>
+  <div class="block">
+    <div class="mt-2">
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" checked="" />
+          <span class="ml-2">Email me news and special offers</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <fieldset class="flex gap-4">
+    <legend>Ipsum and lorem?</legend>
+    <div>
+      <input type="radio" value="True" id="q25_radio1" name="q25" />
+      <label for="q25_radio1">True</label>
+    </div>
+    <div>
+      <input type="radio" value="False" id="q25_radio2" name="q25" />
+      <label for="q25_radio2">False</label>
+    </div>
+    <div>
+      <input type="radio" value="huh?" id="q25_radio3" name="q25" checked />
+      <label for="q25_radio3">What is the question?</label>
+    </div>
+  </fieldset>
+</div>

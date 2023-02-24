@@ -1,0 +1,275 @@
+<body
+  x-data="{overflowBody: true, bug: true}"
+  :class="overflowBody ? 'overflow-auto' : 'overflow-hidden max-h-screen'"
+>
+  {{ partial "menu.html" . }}
+
+  <div class="p-3">
+    <h1 class="text-xl">Form 1</h1>
+  </div>
+  <div
+    class="py-4"
+    x-data="{overlay: false, overlayHalph: true, formOverlay1: false, formOverlay2: false, formOverlay3: false,}"
+  >
+    <div class="flex">
+      <!-- Main content -->
+      <div class="border grow">
+        <div class="p-3">
+          <div class="d-flex">
+            <button
+              @click="overlay = true; overflowBody = false; formOverlay1 = true"
+              :class="overlay1 ? ' border-green-500' : 'border-green-500/0'"
+              class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+            >
+              Overlay Form 1 (halph)
+            </button>
+
+            <button
+              @click="overlay = true; formOverlay2 = true"
+              :class="overlay2 ? ' border-green-500' : 'border-green-500/0'"
+              class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+            >
+              Overlay Form 2
+            </button>
+            <button
+              @click="overlay = true; formOverlay3 = true"
+              :class="overlay3 ? ' border-green-500' : 'border-green-500/0'"
+              class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+            >
+              Overlay Form 3
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="z-10 border absolute top-[0] left-[auto] bottom-[0] right-[0] bg-slate-50"
+      :class="overlayHalph ? 'w-[50vw]' : 'w-[100vw]'"
+      x-show="overlay"
+    >
+      <div class="flex flex-col max-h-screen h-screen">
+        <section class="flex justify-between items-center p-2">
+          <div>
+            <strong x-show="formOverlay1">Form Overlay 1</strong>
+            <strong x-show="formOverlay2">Form Overlay 2</strong>
+            <strong x-show="formOverlay3">Form Overlay 3</strong>
+          </div>
+          <div>
+            <button
+              @click="overlay = true; overflowBody = false; formOverlay1 = true; overlayHalph = false; bug = false"
+              :class="overlay1 ? ' border-green-500' : 'border-green-500/0'"
+              class="rounded-md bg-white px-2 py-2.5 shadow border border-solid border-1"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-box-arrow-up-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
+                />
+              </svg>
+            </button>
+            <button
+              @click="overlay = false; overflowBody = true; formOverlay1 = false; overlayHalph = false; bug = true"
+              :class="overlay1 ? ' border-green-500' : 'border-green-500/0'"
+              class="rounded-md bg-white px-2 py-2.5 shadow border border-solid border-1"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-x"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            </button>
+          </div>
+        </section>
+        <section class="flex flex-col flex-grow p-2 overflow-y-scroll">
+          <div class="bg-red-100/50 my-2 p-2 text-red-900 rounded">
+            <p>This is what we are using at this moment</p>
+            <p>more clicks & scroll problems</p>
+          </div>
+          {{ partial "sample-form.html" . }}
+        </section>
+        <section class="">
+          <div class="flex justify-between bg-slate-200 p-2">
+            <button
+              @click="overlay = !overlay"
+              :class="overlay1 ? ' border-red-500' : 'border-red-500/0'"
+              class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+            >
+              Cancel
+            </button>
+            <button
+              @click="overlay1 = !overlay1; overlay2 = true"
+              :class="overlay1 ? ' border-red-500' : 'border-red-500/0'"
+              class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+            >
+              Next form 2
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div
+      x-show="overlay"
+      @click="overlay = !overlay; formOverlay1 = false; formOverlay2 = false; formOverlay3 = false"
+      class="z-0 absolute inset-0 bg-slate-800/50 backdrop-blur-lg"
+    ></div>
+  </div>
+
+  <div class="p-3">
+    <h1 class="text-xl">Form 2</h1>
+  </div>
+  <div class="py-4 w-100" x-data="{form1: false, form2: false, form3: false,}">
+    <div :class=" form1 || form2 || form3 ? 'mb-[5rem]' : ''">
+      <div class="flex">
+        <!-- Main content -->
+        <div class="border grow">
+          <div class="p-3">
+            <div class="d-flex">
+              <button
+                @click="form1 = !form1;"
+                :class="form1 ? ' border-green-500' : 'border-green-500/0'"
+                class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+              >
+                Form 1
+              </button>
+              <button
+                @click="form2 = !form2;"
+                :class="form2 ? ' border-green-500' : 'border-green-500/0'"
+                class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+              >
+                Form 2
+              </button>
+              <button
+                @click="form3 = !form3;"
+                :class="form3 ? ' border-green-500' : 'border-green-500/0'"
+                class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+              >
+                Form 3
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="z-10 p-2 border bg-slate-50" x-show="form1">
+        <div class="flex flex-col">
+          <strong>Form 1</strong>
+          <div class="bg-green-100/50 my-2 p-2 text-green-900 rounded">
+            <p>Propsal to have the form in place</p>
+          </div>
+        </div>
+      </div>
+      <div class="z-10 p-2 border bg-slate-50" x-show="form2">
+        <div class="flex flex-col">
+          <strong>Form 2</strong>
+          <div class="bg-green-100/50 my-2 p-2 text-green-900 rounded">
+            <p>Propsal to have the form in place</p>
+          </div>
+        </div>
+      </div>
+      <div class="z-10 p-2 border bg-slate-50" x-show="form3">
+        <div class="flex flex-col">
+          <strong>Form 3</strong>
+          <div class="bg-green-100/50 my-2 p-2 text-green-900 rounded">
+            <p>Propsal to have the form in place</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      x-show="form1 || form2 || form3"
+      class="fixed bottom-0 w-[100vw] bg-slate-200"
+    >
+      <div class="p-3 block w-100">
+        <div class="flex w-100 justify-between">
+          <div>
+            <button
+              x-show="form1 || form2 || form3"
+              @click="form1 = false; form2 = false; form3 = false;"
+              class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+            >
+              Cancel
+            </button>
+          </div>
+          <div>
+            <button
+              x-show="form1 && !form2 &&  !form3"
+              @click="form2 = true;"
+              :class="form1 ? ' border-green-500' : 'border-green-500/0'"
+              class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+            >
+              Next 1
+            </button>
+            <button
+              x-show="form1 && form2 &&  !form3"
+              @click="form1 = true; form2 = true ; form3 = true;"
+              :class="form2 ? ' border-green-500' : 'border-green-500/0'"
+              class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+            >
+              Next 2
+            </button>
+            <button
+              x-show="form1 && form2 &&  form3"
+              @click="form1 = false; form2 = false; form3 = false;"
+              :class="form3 ? ' border-green-500' : 'border-green-500/0'"
+              class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Parent component -->
+  <div x-data="{ name: 'John', age: 30 }" id="JSON">
+    <div x-data="{ email: 'john@example.com' }" class="flex flex-col">
+      <lable x-text="name"></lable>
+      <input type="email" x-model="email" />
+    </div>
+  </div>
+</body>
+
+<script>
+  const el = document.getElementById("JSON");
+
+  console.log(getData(el));
+  function getData(el) {
+    let result = {};
+
+    // Collect data from the current element
+    if (el.__x) {
+      result = el.__x.getUnobservedData();
+    }
+
+    // Recursively collect data from child elements
+    for (let i = 0; i < el.children.length; i++) {
+      const child = el.children[i];
+      const childData = getData(child);
+      result = { ...result, ...childData };
+    }
+
+    return result;
+  }
+  const jsonData = JSON.stringify(getData(document.body));
+  console.log(jsonData);
+  console.log("halo");
+</script>

@@ -1,0 +1,47 @@
+[
+    {
+        "id": 12345,
+        "title": 12345,
+        "subform": false,
+        "ux_col": 2,
+        "ux_fullWidth": false,
+        "fields": [
+            {
+                "label": "Label",
+                "_typeOptions": [
+                    "input[type='text']",
+                    "input[type='password']",
+                    "input[type='email']",
+                    "input[type='number']",
+                    "input[type='url']",
+                    "input[type='date']",
+                    "input[type='datetime-local']",
+                    "input[type='month']",
+                    "input[type='week']",
+                    "input[type='time']",
+                    "input[type='search']",
+                    "input[type='tel']",
+                    "input[type='checkbox']",
+                    "input[type='radio']",
+                    "select",
+                    "select[multiple]",
+                    "textarea"
+                ],
+                "type": "input[type='text']",
+                "options": [
+                    {
+                        "val": "Smaple text"
+                    }
+                ],
+                "ux_span": 1,
+                "_ux_orientationOptions": [
+                    "vertical",
+                    "horisontal"
+                ],
+                "ux_orientation": "vertical",
+                "end": "end"
+            }
+        ],
+        "end": "end"
+    }
+]

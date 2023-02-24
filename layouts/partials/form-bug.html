@@ -1,0 +1,181 @@
+<body
+  x-data="{ 
+  overflowBody: true,
+  bug: true,
+  overlay: false,
+  overlayHalph: true,
+  formOverlay1: false,
+  formOverlay2: false
+}"
+  :class="overflowBody ? '' : 'overflow-hidden max-h-screen'"
+  class="m-0 p-0"
+>
+  {{ partial "menu.html" . }}
+  <div class="p-4">
+    <div class="d-flex">
+      <button
+        @click="overlay = true; overflowBody = false; formOverlay1 = true; overlayHalph = true"
+        :class="overlay1 ? ' border-green-500' : 'border-green-500/0'"
+        class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+      >
+        Overlay Form 1 (halph + bug)
+      </button>
+
+      <!-- <button
+        @click="overlay = true; overflowBody = false; formOverlay2 = true; formOverlay1 = false; overlayHalph = false; bug = false"
+        :class="overlay1 ? ' border-green-500' : 'border-green-500/0'"
+        class="rounded-md bg-white px-2 py-2.5 shadow border border-solid border-1"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-box-arrow-up-right"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
+          />
+        </svg>
+      </button> -->
+
+      <div
+        class="z-10 border absolute top-[0] left-[auto] bottom-[0] right-[0] bg-slate-50"
+        :class="overlayHalph ? 'w-[50vw]' : 'w-[100vw]'"
+        x-show="overlay"
+      >
+        <div class="flex flex-col max-h-screen h-screen">
+          <section
+            x-show="formOverlay1"
+            class="flex justify-between items-center p-2"
+          >
+            <div>
+              <strong>Form Overlay 1</strong>
+            </div>
+            <div>
+              <button
+                @click="overlay = true; overflowBody = false; formOverlay2 = true; formOverlay1 = false; overlayHalph = false; bug = false"
+                :class="overlay1 ? ' border-green-500' : 'border-green-500/0'"
+                class="rounded-md bg-white px-2 py-2.5 shadow border border-solid border-1"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-box-arrow-up-right"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
+                  />
+                </svg>
+              </button>
+              <button
+                @click="overlay = false; overflowBody = false; formOverlay1 = false; overlayHalph = false; bug = true"
+                :class="overlay1 ? ' border-green-500' : 'border-green-500/0'"
+                class="rounded-md bg-white px-2 py-2.5 shadow border border-solid border-1"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-x"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </section>
+          <section
+            x-show="formOverlay1"
+            class="flex flex-col flex-grow p-2 overflow-y-scroll min-h-[1%]"
+          >
+            <div class="bg-red-100/50 my-2 p-2 text-red-900 rounded">
+              <p>This is what we are using at this moment</p>
+              <p>more clicks & scroll problems</p>
+            </div>
+            {{ partial "sample-form.html" . }}
+          </section>
+          <section x-show="formOverlay1" class="">
+            <div class="flex justify-between bg-slate-200 p-2">
+              <button
+                @click="overlay = !overlay"
+                :class="overlay1 ? ' border-red-500' : 'border-red-500/0'"
+                class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+              >
+                Cancel
+              </button>
+              <button
+                @click="overlay1 = !overlay1; overlay2 = true"
+                :class="overlay1 ? ' border-red-500' : 'border-red-500/0'"
+                class="rounded-md bg-white px-5 py-2.5 shadow border border-solid border-1"
+              >
+                Next form 2
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div
+        x-show="overlay"
+        @click="overlay = !overlay; formOverlay1 = false, formOverlay2 = false, bug = true"
+        class="z-0 absolute inset-0 bg-slate-800/50 backdrop-blur-lg"
+      ></div>
+    </div>
+  </div>
+  <div
+    x-show="formOverlay2"
+    class="absolute inset-0 bg-slate-100 z-30 min-h-screen overflow-y-scroll"
+  >
+    <button
+      x-show="formOverlay2"
+      @click="overlay = false; formOverlay2 = false; bug = true"
+      class="bg-white px-2 py-2.5 shadow border border-solid border-1 absolute top-1 right-1 z-40 rounded-full"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-x"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+        />
+      </svg>
+    </button>
+
+    <iframe
+      x-show="formOverlay2"
+      xxxx-show="formOverlay2"
+      src="/forms-iframe/"
+      title="FULL form view"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0"
+      width="100%"
+      height="100%"
+      class="h-full inset-0 fixed overflow-y-scroll"
+    ></iframe>
+    <!-- scrolling="auto"
+    xxx-class="xxx-h-full w-full block overflow-y-auto overflow-x-hidden border z-10" -->
+  </div>
+</body>
