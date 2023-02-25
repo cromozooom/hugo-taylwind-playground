@@ -1,4 +1,12 @@
-<body class="overflow-y-scroll" x-data="{fieldsSpan: true, fieldsOrder: true}">
+<body
+  class="overflow-y-scroll"
+  x-data="{
+    fieldsSpan: true, 
+    fieldsOrder: true, 
+    editorSide: false,
+    currentForm: null
+  }"
+>
   {{ partial "menu.html" . }}
   <div x-data="mydata()" x-init="fetchform()">
     <div class="flex gap-2 p-2 justify-end">
@@ -26,14 +34,27 @@
           <template x-if="form.ux_edit">
             <form
               action=""
-              class="py-4 border"
-              :class="
-              form.ux_fullWidth ? 'p-10' : 'container mx-auto'
+              class="py-4"
+              :class="{
+                'p-10' : form.ux_fullWidth,
+                'container mx-auto' : !form.ux_fullWidth,
+                'border-4 border-green-100' : form.id === currentForm,
+                'border-4 border-transparent' : form.id !== currentForm
+
+              }
           "
             >
               <strong class="text-lg px-2" x-text="form.title"></strong>
-              <span x-text="form.id"></span>
-              <span x-text="form.ux_fullWidth"></span>
+              <button
+                @click.prevent="
+                editorSide = !editorSide,
+                currentForm = form.id
+              "
+              >
+                <!-- <button @click.prevent="edit(form.id)"> -->
+                edit form:
+                <span x-text="form.id + ' ' + currentForm"></span>
+              </button>
               <div
                 class="grid gap-1"
                 :class="{
@@ -112,7 +133,7 @@
           </template>
         </template>
       </div>
-      <div class="w-[30rem] px-2 flex flex-col">
+      <div x-show="editorSide" class="w-[30rem] px-2 flex flex-col">
         <section class="rounded-md bg-slate-100 p-3">
           <strong> fieldsSpan </strong>
           <div class="py-2">
@@ -155,66 +176,72 @@
           </div>
         </section>
         <template x-for="form in forms">
-          <section class="rounded-md bg-slate-100 p-3">
-            <strong> Edit form </strong>
-            <div class="my-4">
-              <select
-                id="increment-selector"
-                @change.prevent="form.ux_col = parseInt($event.target.value)"
-              >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-              </select>
-            </div>
-            <div>
-              <label
-                class="relative inline-flex items-center mb-4 cursor-pointer"
-              >
-                <input
-                  x-model="form.ux_fullWidth"
-                  type="checkbox"
-                  value="form.ux_fullWidth"
-                  class="sr-only peer"
-                />
-                <div
-                  class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-                ></div>
-                <span
-                  class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >fullWidth</span
+          <template x-if="currentForm === form.id">
+            <section class="rounded-md bg-slate-100 p-3">
+              <strong>
+                Edit form (
+                <span x-text="currentForm + '' + form.id"></span>
+                )
+              </strong>
+              <div class="my-4">
+                <select
+                  id="increment-selector"
+                  @change.prevent="form.ux_col = parseInt($event.target.value)"
                 >
-              </label>
-            </div>
-            <div>
-              <label
-                class="relative inline-flex items-center mb-4 cursor-pointer"
-              >
-                <input
-                  x-model="form.ux_edit"
-                  type="checkbox"
-                  value="form.ux_edit"
-                  class="sr-only peer"
-                />
-                <div
-                  class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-                ></div>
-                <span
-                  class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >Togle Edit</span
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  class="relative inline-flex items-center mb-4 cursor-pointer"
                 >
-              </label>
-            </div>
-          </section>
+                  <input
+                    x-model="form.ux_fullWidth"
+                    type="checkbox"
+                    value="form.ux_fullWidth"
+                    class="sr-only peer"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                  ></div>
+                  <span
+                    class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >fullWidth</span
+                  >
+                </label>
+              </div>
+              <div>
+                <label
+                  class="relative inline-flex items-center mb-4 cursor-pointer"
+                >
+                  <input
+                    x-model="form.ux_edit"
+                    type="checkbox"
+                    value="form.ux_edit"
+                    class="sr-only peer"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                  ></div>
+                  <span
+                    class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >Togle Edit</span
+                  >
+                </label>
+              </div>
+            </section>
+          </template>
         </template>
       </div>
     </div>
@@ -225,6 +252,7 @@
     function mydata() {
       return {
         forms: [],
+        currentForm: null,
         isLoading: false,
         fetchform() {
           this.isLoading = true;
@@ -240,6 +268,12 @@
     // save to storage
     function saveData() {
       localStorage.setItem("forms", JSON.stringify(this.forms));
+    }
+
+    function edit(id) {
+      console.log(this.editorSide);
+      this.editorSide = true;
+      this.currentForm = id;
     }
 
     // switch
