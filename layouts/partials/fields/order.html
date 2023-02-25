@@ -1,0 +1,23 @@
+<div
+  x-show="fieldsOrder"
+  class="bg-slate-800/40 inset-0 absolute flex justify-end items-center p-3 rounded"
+>
+  <div class="flex">
+    <button
+      class="rounded-md bg-white text-sm px-2 py-1.5 shadow border border-solid border-1"
+      @click.prevent="swapItems(index, index - 1, form.fields)"
+      x-bind:disabled="index === 0"
+      x-show="index !== 0 || index === form.fields.length"
+    >
+      Up
+    </button>
+    <button
+      class="rounded-md bg-white text-sm px-2 py-1.5 shadow border border-solid border-1"
+      @click.prevent="swapItems(index, index + 1, form.fields)"
+      x-bind:disabled="index === form.fields.length - 1"
+      x-show="form.fields.length - 1 > index "
+    >
+      Down
+    </button>
+  </div>
+</div>

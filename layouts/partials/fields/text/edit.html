@@ -1,9 +1,10 @@
 <!-- horisontal -->
 <div
-  class="p-2 hover:bg-slate-100 rounded-none"
+  class="p-2 hover:bg-slate-100 rounded-none relative"
   x-show="!item.ux_vertical"
   :class="item.error ?  'bg-red-50/50' : ''"
 >
+  {{ partial "fields/order.html" . }}
   <label class="grid grid-cols-2 gap-2">
     <div class="flex flex-col" :class="item.error ? '':'pt-3'">
       <span
@@ -30,10 +31,11 @@
 </div>
 <!-- vertical -->
 <div
-  class="flex flex-col p-2 hover:bg-slate-100 rounded"
+  class="flex flex-col p-2 hover:bg-slate-100 rounded relative"
   x-show="item.ux_vertical"
   :class="item.error ?  'bg-red-50/50' : ''"
 >
+  {{ partial "fields/order.html" . }}
   <label class="block">
     <span
       class="font-medium text-sm"

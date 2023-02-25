@@ -3,9 +3,9 @@
         "id": 1,
         "title": "My first form",
         "subform": false,
-        "ux_col": 2,
+        "ux_col": 1,
         "ux_edit": true,
-        "ux_fullWidth": false,
+        "ux_fullWidth": true,
         "fields": [
             {
                 "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
@@ -90,7 +90,7 @@
         "title": "My second form",
         "subform": false,
         "ux_col": 1,
-        "ux_edit": false,
+        "ux_edit": true,
         "ux_fullWidth": true,
         "fields": [
             {
