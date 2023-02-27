@@ -1,22 +1,26 @@
 <div
-  class="flex flex-col p-2 hover:bg-slate-100 relative"
-  :class="item.error ?  'bg-red-50/50' : ''"
+  class="p-2 hover:bg-slate-100 rounded relative"
+  :class="item.error.visible ?  'bg-red-50/50' : ''"
 >
-  {{ partial "fields/order.html" . }}
-  <label
-    for="message"
-    class="block mb-2 text-sm font-medium"
-    :class="item.error ?  'text-red-500' : ''"
-    >Your message</label
-  >
-  <textarea
-    id="message"
-    rows="4"
-    class="block p-2.5 w-full rounded border"
-    placeholder="Leave a comment..."
-    :class="item.error ? 'bg-red-50 border-red-300 focus:ring-red-500 focus:border-blue-500' : 'bg-gray-50 border-gray-300 focus:ring-blue-500 focus:border-blue-500'"
-  ></textarea>
-  <template x-if="item.error  && item.error.content">
-    <span class="text-red-500 py-1 mt-2" x-text="item.error.content"> </span>
-  </template>
+  {{ partial "fields/field-toll.html" . }}
+  <div class="flex flex-col">
+    <label
+      for="message"
+      class="block mb-2 text-sm font-medium"
+      :class="item.error.visible ?  'text-red-500' : ''"
+      >Your message</label
+    >
+    <textarea
+      id="message"
+      rows="4"
+      class="block p-2.5 w-full rounded border"
+      :placeholder="item.placeholder"
+      :class="item.error.visible ? 'bg-red-50 border-red-300 focus:ring-red-500 focus:border-blue-500' : 'bg-gray-50 border-gray-300 focus:ring-blue-500 focus:border-blue-500'"
+    ></textarea>
+    <template x-if="item.error.visible && item.error.content">
+      xx
+      <small class="text-red-500 py-1 mt-2" x-text="item.error.content">
+      </small>
+    </template>
+  </div>
 </div>

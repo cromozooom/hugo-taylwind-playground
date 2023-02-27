@@ -6,3 +6,31 @@
 xbody * {
   outline: 1px solid red;
 }
+
+.grid.grid-cols-2.view-grid {
+  background: linear-gradient(
+    90deg,
+    #000 0%,
+    #fff 0.5%,
+    #fff 49%,
+    #000 50%,
+    #fff 51%,
+    #fff 99%,
+    #000 100%
+  );
+}
+.grid.grid-cols-3.view-grid {
+  background: linear-gradient(
+    90deg,
+    #000 0%,
+    #fff 0.1%,
+    #fff 33.3%,
+    #000 33.33%,
+    #fff 33.38%,
+    #fff 66%,
+    #000 66.666%,
+    #fff 67%,
+    #fff 99%,
+    #000 100%
+  );
+}

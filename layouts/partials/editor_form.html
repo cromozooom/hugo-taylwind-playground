@@ -1,0 +1,59 @@
+<template x-for="(form, indexForm) in forms" x-if="currentForm">
+  <template x-if="indexForm === currentForm">
+    <section class="rounded-md">
+      <div class="my-4">
+        <select
+          id="increment-selector"
+          @change.prevent="form.ux_col = parseInt($event.target.value)"
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+      </div>
+      <div>
+        <label class="relative inline-flex items-center mb-4 cursor-pointer">
+          <input
+            x-model="form.ux_fullWidth"
+            type="checkbox"
+            value="form.ux_fullWidth"
+            class="sr-only peer"
+          />
+          <div
+            class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+          ></div>
+          <span
+            class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >fullWidth</span
+          >
+        </label>
+      </div>
+      <div>
+        <label class="relative inline-flex items-center mb-4 cursor-pointer">
+          <input
+            x-model="form.ux_edit"
+            type="checkbox"
+            value="form.ux_edit"
+            class="sr-only peer"
+          />
+          <div
+            class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+          ></div>
+          <span
+            class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >Togle Edit</span
+          >
+        </label>
+      </div>
+    </section>
+  </template>
+</template>

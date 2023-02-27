@@ -1,0 +1,74 @@
+<div class="flex flex-col">
+  <div>
+    <label for="label" class="flex flex-col"
+      >Label
+      <input id="label" type="text" x-model="item.label" />
+    </label>
+  </div>
+
+  <div class="my-4">
+    <label for="label" class="flex flex-col">
+      Placeholder xs
+      <select
+        id="type-selector"
+        x-model="item.type"
+        @change.prevent="console.log(item.type)"
+      >
+        <option value="text">text</option>
+        <option value="password">password</option>
+        <option value="email">email</option>
+        <option value="number">number</option>
+        <option value="url">url</option>
+        <option value="date">date</option>
+        <option value="datetime">datetime-local</option>
+        <option value="month">month</option>
+        <option value="week">week</option>
+        <option value="time">time</option>
+        <option value="search">search</option>
+        <option value="tel">tel</option>
+        <option value="checkbox">checkbox</option>
+        <option value="radio">radio</option>
+      </select>
+    </label>
+  </div>
+  <div x-show="item.type !== 'checkbox'">
+    <label for="label" class="flex flex-col"
+      >Placeholder xs
+      <input id="label" type="text" x-model="item.placeholder" />
+    </label>
+  </div>
+  <div>
+    <label for="label" class="flex flex-col"
+      >Error
+      <input id="label" type="text" x-model="item.error.content" />
+    </label>
+  </div>
+  <div class="my-2">
+    <label class="relative inline-flex items-center cursor-pointer">
+      <input
+        x-model="item.ux_vertical"
+        type="checkbox"
+        value="item.ux_vertical"
+        class="sr-only peer"
+      />
+      <div
+        class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+      ></div>
+      <span class="ml-3 text-sm font-medium text-gray-900">Rotate</span>
+    </label>
+  </div>
+  <div class="my-2">
+    <label class="relative inline-flex items-center cursor-pointer">
+      <input
+        x-model="item.error.visible"
+        type="checkbox"
+        value="item.error.visible"
+        class="sr-only peer"
+      />
+      <div
+        class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+      ></div>
+      <span class="ml-3 text-sm font-medium text-gray-900">Error</span>
+    </label>
+  </div>
+</div>

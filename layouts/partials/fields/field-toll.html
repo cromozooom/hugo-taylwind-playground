@@ -1,0 +1,161 @@
+<div
+  x-show="optionFields"
+  class="bg-slate-800/10 hover:bg-slate-800/50 inset-0 absolute flex justify-center items-center p-3 rounded py-2"
+>
+  <div
+    class="flex justify-center items-center bg-white w-auto gap-1 rounded-full"
+  >
+    <div x-show="fieldsSpan" class="flex justify-self-end">
+      <div class="flex justify-end items-center">
+        <span
+          class="text-xs rounded-full bg-black text-white min-w-[1.5rem] h-[1.5rem] flex justify-center items-center m-1 px-2"
+          x-text="item.ux_span + '/' + form.ux_col"
+        ></span>
+        <button
+          class="text-sm px-1.5 py-1 rounded-l-md"
+          @click.prevent="decreaseSpan(item, form)"
+          title="increase span"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            fill="currentColor"
+            class="bi bi-dash"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"
+            />
+          </svg>
+        </button>
+        <button
+          class="text-sm px-1.5 py-1 rounded-r-md"
+          @click.prevent="increaseSpan(item, form)"
+          title="decrease span"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            fill="currentColor"
+            class="bi bi-plus-lg"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div x-show="fieldsRotate" class="flex justify-self-center">
+      <div class="flex justify-end items-center">
+        <button
+          class="text-sm px-1.5 py-1 rounded-md"
+          @click.prevent="item.ux_vertical = !item.ux_vertical"
+          title="vertical / horisontal"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            fill="currentColor"
+            class="bi bi-arrow-repeat"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div x-show="editField" class="flex justify-self-center">
+      <div class="flex justify-end items-center">
+        <button
+          class="text-sm px-1.5 py-1 rounded-full"
+          @click.prevent="currentField = index, currentForm = indexForm"
+          title="edit"
+          :class="{
+              'outline-2 outline outline-blue-500' : index === currentField
+          }"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            fill="currentColor"
+            class="bi bi-pencil"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div x-show="fieldsIndex" class="flex justify-self-start">
+      <div class="flex justify-end items-center">
+        <button
+          class="text-sm px-1.5 py-1 rounded-l-md"
+          @click.prevent="swapItems(index, index - 1, form.fields)"
+          x-bind:disabled="index === 0"
+          xx-show="index !== 0 , index === form.fields.length - 1"
+          :class="{
+              'opacity-50 text-red-500' : index === 0,              
+            }
+        "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            fill="currentColor"
+            class="bi bi-arrow-up"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"
+            />
+          </svg>
+        </button>
+        <button
+          class="text-sm px-1.5 py-1"
+          @click.prevent="swapItems(index, index + 1, form.fields)"
+          x-bind:disabled="index === form.fields.length - 1"
+          x-show="form.fields.length - 1 > index "
+          :class="{
+        'rounded-r-md' : form.fields.length - 1 > index,
+        'rounded' : index === 0,
+    }"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            fill="currentColor"
+            class="bi bi-arrow-down"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"
+            />
+          </svg>
+        </button>
+        <span
+          class="text-xs rounded-full bg-black text-white w-[1.5rem] h-[1.5rem] flex justify-center items-center m-1"
+          x-text="index + 1"
+        ></span>
+      </div>
+    </div>
+  </div>
+</div>
