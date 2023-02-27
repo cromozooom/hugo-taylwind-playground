@@ -165,7 +165,7 @@
                 }
             },
             {
-                "label": "textarea with label",
+                "label": "Textarea with label",
                 "type": "textarea",
                 "ux_span": 1,
                 "ux_vertical": false,

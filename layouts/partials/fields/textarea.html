@@ -8,6 +8,7 @@
       for="message"
       class="block mb-2 text-sm font-medium"
       :class="item.error.visible ?  'text-red-500' : ''"
+      x-text="item.label"
       >Your message</label
     >
     <textarea
