@@ -34,8 +34,7 @@
           class="text-sm px-1.5 py-1 rounded-r-md"
           @click.prevent="increaseSpan(item, form)"
           title="increase span"
-          xx-show="item.ux_span < form.ux_col"
-          xxx-show="item.ux_span >= form.ux_col"
+          x-show="item.ux_span <= form.ux_col"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
