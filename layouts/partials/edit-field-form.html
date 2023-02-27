@@ -1,14 +1,14 @@
 <div class="flex flex-col">
-  <div>
-    <label for="label" class="flex flex-col"
-      >Label
+  <div class="mb-4">
+    <label for="label" class="flex flex-col">
+      <small class="text-sm">Label</small>
       <input id="label" type="text" x-model="item.label" />
     </label>
   </div>
 
-  <div class="my-4">
+  <div class="mb-4">
     <label for="label" class="flex flex-col">
-      Placeholder xs
+      <small class="text-sm">Type</small>
       <select
         id="type-selector"
         x-model="item.type"
@@ -28,18 +28,19 @@
         <option value="tel">tel</option>
         <option value="checkbox">checkbox</option>
         <option value="radio">radio</option>
+        <option value="select">select</option>
       </select>
     </label>
   </div>
-  <div x-show="item.type !== 'checkbox'">
-    <label for="label" class="flex flex-col"
-      >Placeholder xs
+  <div class="mb-4" x-show="item.type !== 'checkbox'">
+    <label for="label" class="flex flex-col">
+      <small class="text-sm"> Placeholder </small>
       <input id="label" type="text" x-model="item.placeholder" />
     </label>
   </div>
-  <div>
-    <label for="label" class="flex flex-col"
-      >Error
+  <div class="mb-4">
+    <label for="label" class="flex flex-col">
+      <small class="text-sm"> Error</small>
       <input id="label" type="text" x-model="item.error.content" />
     </label>
   </div>
