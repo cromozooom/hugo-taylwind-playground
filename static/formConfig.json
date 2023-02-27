@@ -12,10 +12,21 @@
         "fields": [
             {
                 "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                "type": "text",
+                "type": "select",
                 "options": [
                     {
-                        "val": "Smaple text",
+                        "name": "Choose a country",
+                        "val": "Choose a country",
+                        "selected": true
+                    },
+                    {
+                        "name": "United States",
+                        "val": "US",
+                        "selected": false
+                    },
+                    {
+                        "name": "Canada",
+                        "val": "CA",
                         "selected": false
                     }
                 ],

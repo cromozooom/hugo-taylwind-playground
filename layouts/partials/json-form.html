@@ -226,6 +226,9 @@
                     <div x-show="item.type === 'textarea'">
                       {{ partial "fields/textarea.html" . }}
                     </div>
+                    <div x-show="item.type === 'select'">
+                      {{ partial "fields/select/edit.html" . }}
+                    </div>
 
                     <div>
                       <!-- <span

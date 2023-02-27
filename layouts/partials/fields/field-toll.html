@@ -109,7 +109,7 @@
           class="text-sm px-1.5 py-1 rounded-l-md"
           @click.prevent="swapItems(index, index - 1, form.fields)"
           x-bind:disabled="index === 0"
-          xx-show="index !== 0 , index === form.fields.length - 1"
+          x-show="index !== 0 , index === form.fields.length - 1"
           :class="{
               'opacity-50 text-red-500' : index === 0,              
             }

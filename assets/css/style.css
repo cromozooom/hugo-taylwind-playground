@@ -2148,16 +2148,8 @@ select {
   outline-style: solid;
 }
 
-.outline-2 {
-  outline-width: 2px;
-}
-
 .outline-4 {
   outline-width: 4px;
-}
-
-.outline-blue-500 {
-  outline-color: #3b82f6;
 }
 
 .outline-green-500 {

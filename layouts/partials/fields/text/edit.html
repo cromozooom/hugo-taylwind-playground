@@ -50,8 +50,8 @@
       :class="item.error.visible ? 'border-red-300 bg-red-50  focus:ring-red-500 focus:border-red-500' : 'bg-gray-50 border-gray-300 focus:ring-blue-500 focus:border-blue-500' "
     />
   </label>
-  <template x-show="item.error.visible && item.error.content">
-    <span class="py-1 text-red-500 rounded mt-2" x-text="item.error.content">
-    </span>
+  <template x-if="item.error.visible && item.error.content">
+    <small class="py-1 text-red-500 rounded mt-2" x-text="item.error.content">
+    </small>
   </template>
 </div>

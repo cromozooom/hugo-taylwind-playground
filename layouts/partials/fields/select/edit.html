@@ -1,0 +1,82 @@
+<!-- horisontal -->
+<div
+  class="p-2 hover:bg-slate-100 rounded-none relative"
+  x-show="!item.ux_vertical"
+  :class="item.error.visible ?  'bg-red-50/50' : ''"
+>
+  {{ partial "fields/field-toll.html" . }}
+  <div class="grid grid-cols-2">
+    <div class="flex flex-col">
+      <label
+        for="countries"
+        x-text="item.label"
+        class="mb-2 text-sm font-medium"
+        :class="item.error.visible ? 'text-red-600':'text-black' "
+      >
+      </label>
+      <template x-if="item.error.visible && item.error.content">
+        <small
+          class="col-span-2 text-red-500 mt-2"
+          x-text="item.error.content"
+        ></small>
+      </template>
+    </div>
+    <div class="flex items-center">
+      <select
+        id="countries"
+        class="bg-gray-50 border text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        :class="item.error.visible ? 'border-red-300':'border-gray-300' "
+      >
+        <template x-for="(option, index) in item.options">
+          <option
+            x-if="!index"
+            :selected="option.selected"
+            x-text="option.name"
+          ></option>
+          <option
+            x-if="index"
+            :value="option.val"
+            x-text="option.name"
+          ></option>
+        </template>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- vertical -->
+<div
+  class="p-2 hover:bg-slate-100 rounded-none relative"
+  x-show="item.ux_vertical"
+  :class="item.error.visible ?  'bg-red-50/50' : ''"
+>
+  {{ partial "fields/field-toll.html" . }}
+  <div class="flex flex-col">
+    <label
+      for="countries"
+      x-text="item.label"
+      class="block mb-2 text-sm font-medium"
+      :class="item.error.visible ? 'text-red-600':'text-black' "
+    ></label>
+    <select
+      id="countries"
+      class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      :class="item.error.visible ? 'border-red-300':'border-gray-300' "
+    >
+      <template x-for="(option, index) in item.options">
+        <option
+          x-if="!index"
+          :selected="option.selected"
+          x-text="option.name"
+        ></option>
+        <option x-if="index" :value="option.val" x-text="option.name"></option>
+      </template>
+    </select>
+  </div>
+  <template x-if="item.error.visible && item.error.content">
+    <small
+      class="col-span-2 text-red-500 mt-2"
+      x-text="item.error.content"
+    ></small>
+  </template>
+</div>
