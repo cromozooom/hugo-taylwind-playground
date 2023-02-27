@@ -183,12 +183,50 @@
                     <div x-show="item.type === 'text'">
                       {{ partial "fields/text/edit.html" . }}
                     </div>
+                    <div x-show="item.type === 'password'">
+                      {{ partial "fields/text/edit.html" . }}
+                    </div>
+                    <div x-show="item.type === 'email'">
+                      {{ partial "fields/text/edit.html" . }}
+                    </div>
+                    <div x-show="item.type === 'number'">
+                      {{ partial "fields/text/edit.html" . }}
+                    </div>
+                    <div x-show="item.type === 'url'">
+                      {{ partial "fields/text/edit.html" . }}
+                    </div>
+                    <div x-show="item.type === 'date'">
+                      {{ partial "fields/text/edit.html" . }}
+                    </div>
+                    <div x-show="item.type === 'datetime'">
+                      {{ partial "fields/text/edit.html" . }}
+                    </div>
+                    <div x-show="item.type === 'month'">
+                      {{ partial "fields/text/edit.html" . }}
+                    </div>
+                    <div x-show="item.type === 'week'">
+                      {{ partial "fields/text/edit.html" . }}
+                    </div>
+                    <div x-show="item.type === 'time'">
+                      {{ partial "fields/text/edit.html" . }}
+                    </div>
+                    <div x-show="item.type === 'search'">
+                      {{ partial "fields/text/edit.html" . }}
+                    </div>
+                    <div x-show="item.type === 'tel'">
+                      {{ partial "fields/text/edit.html" . }}
+                    </div>
+                    <div x-show="item.type === 'radio'">
+                      {{ partial "fields/text/edit.html" . }}
+                    </div>
+
                     <div x-show="item.type === 'checkbox'">
                       {{ partial "fields/checkbox.html" . }}
                     </div>
                     <div x-show="item.type === 'textarea'">
                       {{ partial "fields/textarea.html" . }}
                     </div>
+
                     <div>
                       <!-- <span
                         x-text="'fieldI: ' + index + ' currentField: ' + currentField + ' indexForm: ' + indexForm + ' currentForm: ' + currentForm"
@@ -203,10 +241,10 @@
                     </div>
                   </div>
                 </template>
-                <div
-                  class="flex items-center justify-center bg-slate-50 rounded p-2"
-                >
-                  <div class="">
+                <div class="col-span-full">
+                  <div
+                    class="flex items-center justify-center bg-slate-50 rounded p-2"
+                  >
                     <button
                       class="flex mx-auto items-center gap-2 rounded-md bg-white px-5 py-2.5 border border-solid border-1"
                       @click.prevent="addField(form)"
@@ -443,9 +481,37 @@
     // Reset Cols
     function resetCols(form, $event) {
       newCols = parseInt($event.target.value);
-      console.log(form);
+      console.log(form.fields.length);
+      console.log(form.ux_col);
+
+      for (let i = 0; i < form.fields.length; i++) {
+        console.log(form.fields);
+      }
+      // for (let i = 0; i < data.length; i++) {
+      //   const fields = data[i].fields;
+      //   Loop through each field object in the fields array
+      //   for (let j = 0; j < fields.length; j++) {
+      //     Reset the ux_span property to 1
+      //     fields[j].ux_span = 1;
+      //   }
+      // }
+
       form.ux_col = newCols;
     }
+    function resetFIeldsOption(
+      editField,
+      fieldsRotate,
+      fieldsSpan,
+      fieldsIndex
+    ) {
+      console.log(editField, fieldsRotate, fieldsSpan, fieldsIndex);
+      editField = false;
+      fieldsRotate = false;
+      fieldsSpan = false;
+      fieldsIndex = false;
+      console.log(editField, fieldsRotate, fieldsSpan, fieldsIndex);
+    }
+
     // save to storage
     function saveData() {
       localStorage.setItem("forms", JSON.stringify(this.forms));
