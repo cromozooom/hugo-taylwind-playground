@@ -4,7 +4,7 @@
       <div class="my-4">
         <select
           id="increment-selector"
-          @change.prevent="form.ux_col = parseInt($event.target.value)"
+          @change.prevent="resetCols(form, $event)"
         >
           <option value="1">1</option>
           <option value="2">2</option>

@@ -14,7 +14,8 @@
         <button
           class="text-sm px-1.5 py-1 rounded-l-md"
           @click.prevent="decreaseSpan(item, form)"
-          title="increase span"
+          title="decrease span"
+          x-show="item.ux_span > 1 && item.ux_span <= form.ux_col || item.ux_span > form.ux_col"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +33,9 @@
         <button
           class="text-sm px-1.5 py-1 rounded-r-md"
           @click.prevent="increaseSpan(item, form)"
-          title="decrease span"
+          title="increase span"
+          xx-show="item.ux_span < form.ux_col"
+          xxx-show="item.ux_span >= form.ux_col"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

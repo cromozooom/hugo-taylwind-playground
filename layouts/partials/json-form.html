@@ -439,6 +439,13 @@
         },
       };
     }
+
+    // Reset Cols
+    function resetCols(form, $event) {
+      newCols = parseInt($event.target.value);
+      console.log(form);
+      form.ux_col = newCols;
+    }
     // save to storage
     function saveData() {
       localStorage.setItem("forms", JSON.stringify(this.forms));
@@ -455,16 +462,12 @@
       console.log(this.items);
     }
     function increaseSpan(span, form) {
-      console.log(span.ux_span);
-      console.log(form.ux_col);
-      if (span.ux_span < form.ux_col && span.ux_span >= 0) {
+      if (span.ux_span < form.ux_col) {
         span.ux_span = span.ux_span + 1;
       }
     }
     function decreaseSpan(span, form) {
-      console.log(span.ux_span);
-      console.log(form.ux_col);
-      if (span.ux_span <= form.ux_col && span.ux_span > 1) {
+      if (span.ux_span > 1) {
         span.ux_span = span.ux_span - 1;
       }
     }
