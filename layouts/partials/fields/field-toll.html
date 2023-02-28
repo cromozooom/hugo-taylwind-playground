@@ -10,6 +10,7 @@
         <span
           class="text-xs rounded-full bg-black text-white min-w-[1.5rem] h-[1.5rem] flex justify-center items-center m-1 px-2"
           x-text="item.ux_span + '/' + form.ux_col"
+          :title="'span: ' + item.ux_span + ', from '+ form.ux_col + ' col'"
         ></span>
         <button
           class="text-sm px-1.5 py-1 rounded-l-md"
@@ -107,6 +108,7 @@
       <div class="flex justify-end items-center">
         <button
           class="text-sm px-1.5 py-1 rounded-l-md"
+          title="decrease index"
           @click.prevent="swapItems(index, index - 1, form.fields)"
           x-bind:disabled="index === 0"
           x-show="index !== 0 , index === form.fields.length - 1"
@@ -131,6 +133,7 @@
         </button>
         <button
           class="text-sm px-1.5 py-1"
+          title="increase index"
           @click.prevent="swapItems(index, index + 1, form.fields)"
           x-bind:disabled="index === form.fields.length - 1"
           x-show="form.fields.length - 1 > index "
@@ -156,6 +159,7 @@
         <span
           class="text-xs rounded-full bg-black text-white w-[1.5rem] h-[1.5rem] flex justify-center items-center m-1"
           x-text="index + 1"
+          :title="'index is: ' + (index + 1)"
         ></span>
       </div>
     </div>
