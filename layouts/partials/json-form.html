@@ -1,5 +1,5 @@
 <body
-  class="overflow-y-scroll"
+  class=""
   x-data="{
     optionFields: true, 
     fieldsRotate: true, 
@@ -8,10 +8,13 @@
     editField: true,
     currentField: null,
     
+    pullOut: false,
     editorSide: true,
     currentForm: null,
   }"
+  :class="pullOut ? 'overflow-hidden relative': 'overflow-y-scroll' "
 >
+  
   <div x-data="{ ids: [] }" x-init="parseUrl(ids)">
     <ul>
       <template x-for="(id, indexId) in ids">
@@ -37,6 +40,8 @@
   <div x-data="mydata()" x-init="fetchform()">
     <div class="flex gap-2 p-2 justify-end">
       <div class="flex shadow rounded-md">
+        {{ partial "fav-list.html" . }}
+
         <button
           class="rounded-l-md bg-white px-5 py-2.5 border-r-0 border border-solid border-1"
           @click="
