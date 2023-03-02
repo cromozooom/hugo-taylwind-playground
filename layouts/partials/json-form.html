@@ -12,7 +12,7 @@
     editorSide: true,
     currentForm: null,
   }"
-  :class="pullOut ? 'overflow-hidden relative': 'overflow-y-scroll' "
+  :class="pullOut ? 'overflow-y-scroll': 'overflow-hidden relative h-full min-h-screen' "
 >
   
   <div x-data="{ ids: [] }" x-init="parseUrl(ids)">
