@@ -102,7 +102,27 @@
 
     <template x-teleport="body">
         <div class="w-1/2 block absolute top-0 right-0 bottom-0 left-auto bg-slate-50 z-20 overflow-hidden" x-show="openHistory">
-            <div class="flex flex-col h-full overflow-hidden">
+            <div class="flex flex-col h-full overflow-hidden"
+            x-data="{
+                selectedId: 1,
+                init() {
+                    // Set the first available tab on the page on page load.
+                    this.$nextTick(() => this.select(this.$id('tab', 1)))
+                },
+                select(id) {
+                    this.selectedId = id
+                },
+                isSelected(id) {
+                    return this.selectedId === id
+                },
+                whichChild(el, parent) {
+                    return Array.from(parent.children).indexOf(el) + 1
+                }
+            }"
+            x-id="['tab']"
+            class="mx-auto  p-2 grow overflow-y-scroll w-full"
+            
+            >
 
                 <div class="p-2 bg-slate-500 text-white flex justify-between">
                     <div class="flex items-center">
@@ -110,7 +130,7 @@
                             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg>
                         </div>
                         <div class="px-2">
-                            History - last 100 dashboards
+                            HHistory - last 100 dashboards
                         </div>
                     </div>
                     <div>
@@ -120,26 +140,7 @@
                     </div>
                 </div>
                 <!-- Tabs -->
-                <div
-                x-data="{
-                    selectedId: null,
-                    init() {
-                        // Set the first available tab on the page on page load.
-                        this.$nextTick(() => this.select(this.$id('tab', 1)))
-                    },
-                    select(id) {
-                        this.selectedId = id
-                    },
-                    isSelected(id) {
-                        return this.selectedId === id
-                    },
-                    whichChild(el, parent) {
-                        return Array.from(parent.children).indexOf(el) + 1
-                    }
-                }"
-                x-id="['tab']"
-                class="mx-auto  p-2 grow overflow-y-scroll w-full"
-                >
+                <div class="bg-slate-100">
                     <!-- Tab List -->
                     <ul
                         x-ref="tablist"
@@ -162,8 +163,8 @@
                                 type="button"
                                 :tabindex="isSelected($el.id) ? 0 : -1"
                                 :aria-selected="isSelected($el.id)"
-                                :class="isSelected($el.id) ? 'border-gray-200 bg-white' : 'border-transparent'"
-                                class="inline-flex rounded-t-md border-t border-l border-r px-5 py-2.5"
+                                :class="isSelected($el.id) ? ' bg-white' : '    '"
+                                class="inline-flex border-r px-5 py-2.5"
                                 role="tab"
                             >Qulify</button>
                         </li>
@@ -177,8 +178,8 @@
                                 type="button"
                                 :tabindex="isSelected($el.id) ? 0 : -1"
                                 :aria-selected="isSelected($el.id)"
-                                :class="isSelected($el.id) ? 'border-gray-200 bg-white' : 'border-transparent'"
-                                class="inline-flex rounded-t-md border-t border-l border-r px-5 py-2.5"
+                                :class="isSelected($el.id) ? 'bg-white' : ''"
+                                class="inline-flex border-r px-5 py-2.5"
                                 role="tab"
                             >Opportunity</button>
                         </li>
@@ -191,8 +192,8 @@
                                 type="button"
                                 :tabindex="isSelected($el.id) ? 0 : -1"
                                 :aria-selected="isSelected($el.id)"
-                                :class="isSelected($el.id) ? 'border-gray-200 bg-white' : 'border-transparent'"
-                                class="inline-flex rounded-t-md border-t border-l border-r px-5 py-2.5"
+                                :class="isSelected($el.id) ? ' bg-white' : ''"
+                                class="inline-flex border-r px-5 py-2.5"
                                 role="tab"
                             >Prospect</button>
                         </li>
@@ -205,15 +206,17 @@
                                 type="button"
                                 :tabindex="isSelected($el.id) ? 0 : -1"
                                 :aria-selected="isSelected($el.id)"
-                                :class="isSelected($el.id) ? 'border-gray-200 bg-white' : 'border-transparent'"
-                                class="inline-flex rounded-t-md border-t border-l border-r px-5 py-2.5"
+                                :class="isSelected($el.id) ? ' bg-white' : ''"
+                                class="inline-flex  border-r px-5 py-2.5"
                                 role="tab"
                             >Contact</button>
                         </li>
                     </ul>
+                </div>
+                <div class="overflow-y-scroll">
         
                     <!-- Panels -->
-                    <div role="tabpanels" class="rounded-b-md border border-gray-200 bg-white">
+                    <div role="tabpanels" class=" bg-white">
                         <!-- Panel -->
                         <section
                             x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))"
@@ -402,7 +405,7 @@
     <script type="text/javascript">
         function myHistory() {
             return {
-                openHistory: false,
+                openHistory: true,
                 history: [],
                 currentForm: null,
                 isLoading: false,
